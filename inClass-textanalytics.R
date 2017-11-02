@@ -95,7 +95,43 @@ body = str_sub(string = emails,
                start = breaks[,2])
 
 
+### Handout 2
 
+#1.
 
+fruit = c("apple","banana","pear","pineapple")
 
+#2.
 
+str_detect(fruit,"a")  # looking for contains a 
+str_detect(fruit, pattern = "^a")  # looking for starts with a
+str_detect(fruit, pattern = "a$")  # looking for ends up with a
+str_detect(fruit, "[aeiou]")  # looking for a/e/i/o/u
+str_detect(fruit,"[a-d]")
+
+#3.
+# detect a string that starts with "a" and ends with "e"
+str_detect(fruit, "^a...e$")
+str_detect(fruit, "^a[a-z]e$")
+str_detect(fruit, "^a[a-z]*e$")
+
+#4.
+phone = "213 740 4826"
+
+parser = "[0-9]{3} [0-9]{3} [0-9]{4}"
+str_detect(phone, parser)
+
+phone = c("213 740 4826","213-740-4826","213.740.4826","(213) 740-4826")
+parser = "[(]?[0-9]{3}[)]?[ -.][0-9]{3}[ -.][0-9]{4}"   #[ ]  has the function "or"
+str_detect(phone, parser)
+
+#5.
+cat(body[10])
+cat(body[18])  # we have achieved the requirement in #4
+
+str_extract(string = body, patter = parser)
+
+#6.
+zip = c("90028","90028-0809")
+parser = "[0-9]{5}(-[0-9]{4})?"
+str_detect(zip,parser)
